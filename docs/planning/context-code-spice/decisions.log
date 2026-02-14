@@ -1,0 +1,16 @@
+# Decisions Log
+# Append-only: date | context | decision | rationale
+# Seeded during brainstorm, updated during scope and finalize
+2026-02-13 | brainstorm | Topic-based skill organization | Matches developer mental model; avoids duplication across books covering same topics; natural keyword activation
+2026-02-13 | brainstorm | MLP scoped to 4 code quality books | Good Code Bad Code, Five Lines of Code, Software Mistakes and Tradeoffs, Looks Good to Me — most relevant to best practices/antipatterns focus
+2026-02-13 | brainstorm | Capture language-specific examples from books as-is | Books use Java pseudocode, TypeScript, Java; keep these examples and maintain reference file for future backfill to Python, Rust, Go, C++
+2026-02-13 | brainstorm | Validate + fill gaps research approach | Cross-reference book concepts with current industry practices; fill gaps where books are dated but don't expand indefinitely
+2026-02-13 | brainstorm | 8 MLP skills planned | code-quality-foundations, code-readability, refactoring-patterns, error-handling-patterns, code-antipatterns, code-review, software-tradeoffs, code-plan-audit
+2026-02-13 | brainstorm | Enhanced spice (skills + commands + agent) | Still conceptually a "spice" addon that enhances Line Cook, but goes beyond skills-only by adding /code:tradeoff, /code:smell, /code:review-prep commands and code-quality-critic agent
+2026-02-13 | brainstorm | Add testing-quality and naming to MLP | 10 skills total: +code-testing-quality (enhances taster agent) and +code-naming (high value, well-sourced from priority books)
+2026-02-13 | scope | 5-phase epic structure | Foundation→Fundamentals→Review/Audit→Commands/Agent→Release. Skills first, then commands that reference them.
+2026-02-13 | scope | Sequential feature flow with blocks | Each feature blocks the next to maintain focus. Skills build foundation for commands.
+2026-02-13 | scope | Content validation as TDD | For knowledge skills, "test" = validate content accuracy, activation keywords, and cross-references. For commands/agent, test = validate invocability and output.
+2026-02-14 | finalize | Plugin name "code", project name "Code Spice" | Matches game-spice rename to "game". Plugin name "code" gives shorter namespace (/code:tradeoff). "Code Spice" used in README and casual descriptions.
+2026-02-14 | finalize | Feature 2.2 depends on Feature 1.1 | Added missing dependency — need plugin structure before creating any skills
+2026-02-14 | finalize | Beads created: 5 epics, 9 features, 18 tasks (32 total) | Full hierarchy with dependency chain across features

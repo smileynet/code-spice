@@ -1,0 +1,663 @@
+# code-spice Menu Plan
+# Enhanced spice addon for Line Cook — code quality knowledge, commands, and agent
+# Source: 4 books (Good Code Bad Code, Five Lines of Code, Software Mistakes & Tradeoffs, Looks Good to Me)
+
+phases:
+  - id: phase-1
+    title: "Phase 1: Plugin Foundation & Tracer"
+    description: "Scaffold plugin structure, create first skill as tracer to prove the pattern works"
+    duration: "1-2 sessions"
+
+    features:
+      - id: feature-1.1
+        title: "Feature 1.1: Installable plugin with first knowledge skill"
+        priority: 1
+        user_story: "As a Line Cook user, I want to install code-spice so that code quality knowledge activates during my planning workflow"
+        acceptance_criteria:
+          - "Plugin installs via /plugin install code-spice"
+          - "code-quality-foundations skill activates during /line:brainstorm when project involves coding"
+          - "Skill content covers quality pillars, abstraction layers, and code goals from source books"
+          - "Language backfill reference file tracks which languages need future supplemental files"
+        tracer_strategy:
+          minimal_flow: "Install plugin → Run /line:brainstorm → Skill activates → Knowledge enhances planning"
+          layers: "plugin.json → skills/code-quality-foundations/SKILL.md → keyword activation"
+          expansion: "Remaining 9 skills, commands, agent, marketplace registration (all deferred)"
+        blocks: ["feature-2.1"]
+        bdd_tests:
+          - test: "Validate_Plugin_Installation_And_Skill_Activation"
+            scenarios:
+              - "Plugin_installs_with_valid_plugin_json"
+              - "Skill_activates_on_code_quality_keywords"
+              - "Skill_covers_quality_pillars_and_abstraction"
+              - "Language_backfill_reference_exists"
+        smoke_tests:
+          - "Plugin directory has valid .claude-plugin/plugin.json"
+          - "skills/code-quality-foundations/SKILL.md has valid frontmatter"
+          - "SKILL.md description contains activation keywords"
+          - "docs/language-backfill.md exists with tracking table"
+
+        tasks:
+          - title: "Scaffold plugin directory structure"
+            priority: 1
+            tracer: "Foundation — proves plugin structure is valid for Claude Code"
+            description: |
+              - Create .claude-plugin/plugin.json following game-spice pattern
+              - Set name: code-spice, version: 0.1.0
+              - Add keywords for code quality topics
+              - Create skills/, commands/, agents/ directories
+              - Create docs/language-backfill.md with language tracking table
+            deliverable: ".claude-plugin/plugin.json, directory structure, language-backfill.md"
+            reference: "~/code/game-spice/.claude-plugin/plugin.json"
+            tdd: true
+
+          - title: "Create code-quality-foundations skill"
+            priority: 1
+            depends_on: ["Scaffold plugin directory structure"]
+            tracer: "First skill — proves content extraction and SKILL.md format work end-to-end"
+            description: |
+              - Read Good Code Bad Code Ch 1-2 (quality pillars, abstraction layers)
+              - Read Software Mistakes & Tradeoffs Ch 1 (introduction to tradeoff thinking)
+              - Synthesize into SKILL.md with:
+                - Quick Reference section with quality pillars table
+                - Code quality goals (works, keeps working, adaptable, doesn't reinvent)
+                - Layers of abstraction guidance
+                - Decision tables for quality tradeoffs
+              - Research: validate pillars against current industry practices
+              - Add cross-references to future skills (code-readability, code-antipatterns, etc.)
+              - Target: 200-400 lines
+            deliverable: "skills/code-quality-foundations/SKILL.md"
+            reference: "~/code/game-spice/skills/game-scoping/SKILL.md"
+            tdd: true
+
+  - id: phase-2
+    title: "Phase 2: Code Fundamentals Knowledge"
+    description: "Extract and synthesize knowledge for code quality guidance during brainstorm/scope and cook phases"
+    duration: "4-5 sessions"
+
+    features:
+      - id: feature-2.1
+        title: "Feature 2.1: Code quality guidance activates during brainstorm and scope"
+        priority: 1
+        user_story: "As a Line Cook user, I want code readability, naming, and tradeoff knowledge to activate during /line:brainstorm and /line:scope so that I plan higher-quality code from the start"
+        acceptance_criteria:
+          - "code-readability skill activates when planning involves code structure, readability, or comments"
+          - "code-naming skill activates when planning involves naming conventions, descriptive names, or variable naming"
+          - "software-tradeoffs skill activates when planning involves design decisions, duplication, flexibility, or optimization"
+          - "Each skill has Quick Reference, decision tables, and cross-references to related skills"
+          - "Skills contain language-specific examples from source books (Java pseudocode, TypeScript, Java)"
+        tracer_strategy:
+          minimal_flow: "Read source chapters → Extract key concepts → Synthesize SKILL.md → Validate activation keywords"
+          layers: "Book content → Synthesized knowledge → SKILL.md frontmatter + content → Keyword activation"
+          expansion: "Language-specific supplemental files, deeper research augmentation"
+        blocks: ["feature-3.1"]
+        bdd_tests:
+          - test: "Validate_Planning_Skills_Quality"
+            scenarios:
+              - "Readability_skill_covers_naming_comments_structure_nesting"
+              - "Naming_skill_covers_descriptive_names_conventions_magic_values"
+              - "Tradeoffs_skill_covers_duplication_flexibility_optimization_api_design"
+              - "All_skills_have_quick_reference_and_decision_tables"
+              - "All_skills_contain_book_specific_language_examples"
+        smoke_tests:
+          - "skills/code-readability/SKILL.md has valid frontmatter with activation keywords"
+          - "skills/code-naming/SKILL.md has valid frontmatter with activation keywords"
+          - "skills/software-tradeoffs/SKILL.md has valid frontmatter with activation keywords"
+          - "Each skill is 200-400 lines with progressive disclosure"
+
+        tasks:
+          - title: "Create code-readability skill"
+            priority: 1
+            tracer: "Readability knowledge — core topic touched by multiple books"
+            description: |
+              - Read Good Code Bad Code Ch 5 (make code readable: comments, nesting, style, anonymous functions)
+              - Read Five Lines of Code Ch 8 (stay away from comments), Ch 13 (make bad code look bad)
+              - Synthesize into SKILL.md covering:
+                - Quick Reference with readability checklist
+                - Comments: when helpful vs harmful
+                - Code structure: nesting depth, function length, consistent style
+                - Anonymous functions: when to use, when to name
+                - Language features: appropriate use of new features
+                - Antipatterns: deep nesting, inconsistent style, unexplained values
+              - Research: modern readability tools and linting practices
+              - Cross-references: code-naming, code-antipatterns, refactoring-patterns
+              - Target: 200-400 lines
+            deliverable: "skills/code-readability/SKILL.md"
+            tdd: true
+
+          - title: "Create code-naming skill"
+            priority: 1
+            tracer: "Naming knowledge — focused topic deserving dedicated skill"
+            description: |
+              - Read Good Code Bad Code Ch 5.1 (descriptive names), 5.6-5.7 (function calls, unexplained values)
+              - Read Five Lines of Code Ch 8 (comments as naming failure indicator)
+              - Read Software Mistakes & Tradeoffs for naming in API contexts
+              - Synthesize into SKILL.md covering:
+                - Quick Reference with naming decision table
+                - Descriptive names vs comments tradeoff
+                - Function and method naming patterns
+                - Variable naming: avoiding magic values, using constants
+                - Boolean naming patterns
+                - Naming antipatterns: abbreviations, single letters, misleading names
+              - Research: current naming convention standards across languages
+              - Cross-references: code-readability, code-antipatterns
+              - Target: 200-300 lines
+            deliverable: "skills/code-naming/SKILL.md"
+            tdd: true
+
+          - title: "Create software-tradeoffs skill"
+            priority: 1
+            tracer: "Tradeoff frameworks — unique contribution from Software Mistakes & Tradeoffs"
+            description: |
+              - Read Software Mistakes & Tradeoffs Ch 1-6 (core tradeoff chapters):
+                - Ch 2: Code duplication vs flexibility
+                - Ch 4: Balancing flexibility and complexity
+                - Ch 5: Premature optimization vs hot path
+                - Ch 6: Simplicity vs cost of maintenance for APIs
+              - Read SM&T Ch 7-9, 12-13 for additional tradeoffs:
+                - Date/time handling, data locality, third-party libraries
+                - Versioning and compatibility, keeping up with trends
+              - Synthesize into SKILL.md covering:
+                - Quick Reference: tradeoff decision matrix
+                - Duplication vs DRY: when duplication is the right choice
+                - Flexibility vs complexity: YAGNI and its limits
+                - Performance: premature optimization vs Pareto principle
+                - API design: simplicity vs extensibility
+                - Dependencies: build vs buy decision framework
+                - Each tradeoff with: symptoms, decision criteria, examples
+              - Research: validate with modern practices (microservices, serverless context)
+              - Cross-references: code-quality-foundations, code-antipatterns, refactoring-patterns
+              - Target: 300-400 lines
+            deliverable: "skills/software-tradeoffs/SKILL.md"
+            tdd: true
+
+      - id: feature-2.2
+        title: "Feature 2.2: Implementation guidance activates during cook"
+        priority: 1
+        user_story: "As a Line Cook user, I want refactoring patterns and error handling guidance to activate during /line:cook so that I write better code during implementation"
+        acceptance_criteria:
+          - "refactoring-patterns skill activates when working on refactoring, code cleanup, or restructuring"
+          - "error-handling-patterns skill activates when working on error handling, exceptions, or robustness"
+          - "Refactoring skill includes a named pattern catalog with trigger rules"
+          - "Error handling skill covers multiple strategies with decision framework"
+        tracer_strategy:
+          minimal_flow: "Read source chapters → Extract patterns/frameworks → Synthesize SKILL.md → Validate keywords"
+          layers: "Book content → Named patterns with triggers → SKILL.md → Keyword activation"
+          expansion: "Language-specific error handling examples, additional refactoring heuristics"
+        blocks: ["feature-3.2"]
+        bdd_tests:
+          - test: "Validate_Implementation_Skills_Quality"
+            scenarios:
+              - "Refactoring_skill_has_named_pattern_catalog"
+              - "Refactoring_skill_includes_trigger_rules_for_when_to_apply"
+              - "Error_handling_skill_covers_exceptions_result_types_robustness"
+              - "Error_handling_skill_has_decision_framework_for_strategy_selection"
+        smoke_tests:
+          - "skills/refactoring-patterns/SKILL.md has valid frontmatter with activation keywords"
+          - "skills/error-handling-patterns/SKILL.md has valid frontmatter with activation keywords"
+          - "Refactoring skill contains named patterns with identifiers"
+          - "Error handling skill contains strategy comparison table"
+
+        tasks:
+          - title: "Create refactoring-patterns skill"
+            priority: 1
+            tracer: "Refactoring catalog — Five Lines of Code's core contribution"
+            description: |
+              - Read Five Lines of Code comprehensively:
+                - Ch 1-2: Refactoring philosophy and rules
+                - Ch 3: Shatter long functions (Extract Method, five-line rule)
+                - Ch 4: Make type codes work (Replace Type Code with Classes, Push Code into Classes)
+                - Ch 5: Fuse similar code (Unify Similar Classes, Combine Ifs)
+                - Ch 6: Defend the data (Encapsulate Data, Enforce Sequence)
+                - Ch 7-14: Real-world application principles
+                - Quick overview: 13 named refactoring patterns
+              - Read Good Code Bad Code Ch 8 (modularity), Ch 9 (reusability)
+              - Synthesize into SKILL.md covering:
+                - Quick Reference: pattern catalog table with names, triggers, and descriptions
+                - Rule-based refactoring triggers (five-line rule, type code smell, etc.)
+                - Each pattern with: Name, When to apply, Before/After, Risks
+                - Refactoring philosophy: compiler collaboration, love deleting code, avoid premature generality
+                - Decision table: "Should I refactor this?"
+              - Research: modern refactoring tools and IDE support
+              - Cross-references: code-readability, code-antipatterns, code-quality-foundations
+              - Target: 300-400 lines
+            deliverable: "skills/refactoring-patterns/SKILL.md"
+            tdd: true
+
+          - title: "Create error-handling-patterns skill"
+            priority: 1
+            tracer: "Error handling strategies — synthesis of two books' perspectives"
+            description: |
+              - Read Good Code Bad Code Ch 4 (errors):
+                - Recoverability, robustness vs failure, fail fast/loud
+                - Signaling errors: exceptions (checked/unchecked), nullable, Result/Outcome types
+                - Promises/futures, magic values
+              - Read Software Mistakes & Tradeoffs Ch 3 (exceptions vs other patterns):
+                - Functional exception handling vs OOP
+                - Mixing paradigms challenges
+              - Synthesize into SKILL.md covering:
+                - Quick Reference: error strategy decision table
+                - Recoverability framework: can recover, can't recover, caller decides
+                - Strategy comparison: exceptions vs Result types vs nullable vs magic values
+                - Fail fast vs robustness: when each applies
+                - Error propagation patterns
+                - Compiler warnings as error prevention
+                - Antipatterns: hidden errors, swallowed exceptions, magic return values
+              - Research: modern error handling (Rust Result, Go errors, TypeScript discriminated unions)
+              - Cross-references: code-antipatterns, software-tradeoffs, code-quality-foundations
+              - Target: 300-400 lines
+            deliverable: "skills/error-handling-patterns/SKILL.md"
+            tdd: true
+
+  - id: phase-3
+    title: "Phase 3: Review & Audit Knowledge"
+    description: "Extract knowledge for antipattern detection, code review, testing, and plan auditing"
+    duration: "3-4 sessions"
+
+    features:
+      - id: feature-3.1
+        title: "Feature 3.1: Antipattern detection during plan-audit"
+        priority: 1
+        user_story: "As a Line Cook user, I want antipattern detection and plan quality checklists during /line:plan-audit so that I catch code quality issues before implementation"
+        acceptance_criteria:
+          - "code-antipatterns skill activates during plan-audit and scope with comprehensive antipattern catalog"
+          - "code-plan-audit skill provides structured scorecard for plan quality assessment"
+          - "Antipatterns include symptoms, examples, and fixes from all four source books"
+          - "Plan audit scorecard maps to Line Cook's existing plan-audit workflow"
+        tracer_strategy:
+          minimal_flow: "Read antipattern chapters → Catalog patterns → Create scorecard → Validate audit integration"
+          layers: "Book antipatterns → Categorized catalog → SKILL.md → Plan-audit activation"
+          expansion: "Architecture-level antipatterns (future code-architecture-audit skill)"
+        blocks: ["feature-4.1"]
+        bdd_tests:
+          - test: "Validate_Audit_Skills_Quality"
+            scenarios:
+              - "Antipatterns_skill_has_categorized_catalog"
+              - "Antipatterns_include_symptoms_examples_fixes"
+              - "Plan_audit_has_structured_scorecard"
+              - "Plan_audit_maps_to_line_cook_workflow"
+        smoke_tests:
+          - "skills/code-antipatterns/SKILL.md has valid frontmatter"
+          - "skills/code-plan-audit/SKILL.md has valid frontmatter"
+          - "Antipatterns skill contains categorized catalog with decision table"
+          - "Plan audit skill contains scorecard with scoring criteria"
+
+        tasks:
+          - title: "Create code-antipatterns skill"
+            priority: 1
+            tracer: "Antipattern catalog — synthesis of all four books' warnings"
+            description: |
+              - Read Good Code Bad Code Ch 6 (avoid surprises), Ch 7 (hard to misuse):
+                - Magic values, null object misuse, unexpected side effects
+                - Mutable state dangers, misleading functions, future-proof enums
+                - Immutability patterns, type safety, access control
+              - Read Five Lines of Code Ch 12 (avoid optimizations and generality)
+              - Read Software Mistakes & Tradeoffs for tradeoff-related antipatterns
+              - Synthesize into SKILL.md covering:
+                - Quick Reference: top 10 code antipatterns with one-line descriptions
+                - Categories: Surprise patterns, Misuse patterns, Complexity patterns, Premature patterns
+                - Each antipattern: Name, Symptoms, Example (before), Fix (after), Prevention
+                - Decision table: "Is this an antipattern or acceptable tradeoff?"
+                - Severity classification: Critical (fix now), Warning (fix soon), Note (consider)
+              - Research: modern antipattern catalogs, OWASP patterns
+              - Cross-references: code-quality-foundations, refactoring-patterns, software-tradeoffs
+              - Target: 300-400 lines
+            deliverable: "skills/code-antipatterns/SKILL.md"
+            tdd: true
+
+          - title: "Create code-plan-audit skill"
+            priority: 1
+            depends_on: ["Create code-antipatterns skill"]
+            tracer: "Plan audit scorecard — synthesized quality checklist for plan review"
+            description: |
+              - Review all completed skills for audit-relevant criteria
+              - Study game-plan-audit skill pattern (questionnaires.md, telemetry.md)
+              - Synthesize into SKILL.md covering:
+                - Quick Reference: plan quality scorecard (10 critical checks)
+                - Code quality completeness assessment
+                - Error handling strategy check
+                - Naming and readability pre-check
+                - Antipattern risk assessment
+                - Tradeoff documentation check
+                - Testing strategy evaluation
+                - Actionability score (criteria, threshold)
+              - Consider supplemental files (e.g., checklists.md) if skill exceeds 400 lines
+              - Cross-references: all other skills
+              - Target: 200-400 lines
+            deliverable: "skills/code-plan-audit/SKILL.md (+ optional supplemental files)"
+            reference: "~/code/game-spice/skills/game-plan-audit/SKILL.md"
+            tdd: true
+
+      - id: feature-3.2
+        title: "Feature 3.2: Code review and testing guidance during serve and cook"
+        priority: 1
+        user_story: "As a Line Cook user, I want code review best practices during /line:serve and testing quality guidance during /line:cook so that reviews are more effective and tests are higher quality"
+        acceptance_criteria:
+          - "code-review skill activates during serve with review process, effective feedback, and automation guidance"
+          - "code-testing-quality skill enhances taster agent with testing principles and practices"
+          - "Code review skill covers AI-augmented review from LGTM Ch 13"
+          - "Testing skill covers both unit testing principles and practices"
+        tracer_strategy:
+          minimal_flow: "Read LGTM → Extract review framework → Read GC/BC testing → Extract principles → Write skills"
+          layers: "Book content → Review/testing frameworks → SKILL.md → Serve/cook activation"
+          expansion: "Pair programming patterns, mob programming patterns (LGTM Ch 11-12)"
+        blocks: ["feature-4.2"]
+        bdd_tests:
+          - test: "Validate_Review_Testing_Skills"
+            scenarios:
+              - "Review_skill_covers_process_feedback_automation"
+              - "Review_skill_includes_AI_review_guidance"
+              - "Testing_skill_covers_principles_and_practices"
+              - "Testing_skill_enhances_taster_agent"
+        smoke_tests:
+          - "skills/code-review/SKILL.md has valid frontmatter"
+          - "skills/code-testing-quality/SKILL.md has valid frontmatter"
+          - "Code review skill covers AI-augmented review section"
+          - "Testing skill has principles checklist"
+
+        tasks:
+          - title: "Create code-review skill"
+            priority: 1
+            tracer: "Code review knowledge — LGTM's core contribution"
+            description: |
+              - Read Looks Good to Me comprehensively:
+                - Part 1: Review foundations, PR elements, participant roles
+                - Part 2: Team Working Agreements, automation, composing effective comments
+                - Part 3: Review dilemmas, delays, loopholes, emergencies
+                - Part 4: Pair/mob programming, AI-augmented reviews
+              - Synthesize into SKILL.md covering:
+                - Quick Reference: review checklist and effective comment templates
+                - Review process: goals, focus areas, approval policies
+                - PR best practices: title, description, labels, size
+                - Effective feedback: comment types, tone, actionability
+                - Team Working Agreement framework
+                - Review automation: what to automate vs human judgment
+                - AI-augmented review guidance (Ch 13 — directly relevant to Line Cook users)
+                - Review antipatterns: rubber-stamping, nitpicking, gatekeeping
+                - Decision table: "What should I focus on in this review?"
+              - Research: modern AI code review tools and practices
+              - Cross-references: code-antipatterns, code-readability, code-testing-quality
+              - Target: 300-400 lines
+            deliverable: "skills/code-review/SKILL.md"
+            tdd: true
+
+          - title: "Create code-testing-quality skill"
+            priority: 1
+            tracer: "Testing quality knowledge — enhances taster agent during cook"
+            description: |
+              - Read Good Code Bad Code Ch 10 (unit testing principles):
+                - Primary function: detect broken code
+                - Principles beyond detection
+              - Read Good Code Bad Code Ch 11 (unit testing practices):
+                - Best practices for robust, useful, maintainable tests
+                - Test structure and organization
+              - Synthesize into SKILL.md covering:
+                - Quick Reference: testing quality checklist
+                - Unit testing principles: isolation, repeatability, clarity
+                - Test structure: Arrange-Act-Assert / Given-When-Then
+                - Test naming conventions
+                - What to test vs what not to test
+                - Test doubles: mocks, stubs, fakes — when to use each
+                - Testing antipatterns: brittle tests, testing implementation, slow tests
+                - Coverage: meaningful coverage vs metric gaming
+              - Research: modern testing practices (property-based testing, snapshot testing)
+              - Cross-references: code-review, code-quality-foundations
+              - Target: 250-350 lines
+            deliverable: "skills/code-testing-quality/SKILL.md"
+            tdd: true
+
+  - id: phase-4
+    title: "Phase 4: Interactive Commands & Agent"
+    description: "Create new /code: commands and code-quality-critic agent that leverage skill knowledge"
+    duration: "3-4 sessions"
+
+    features:
+      - id: feature-4.1
+        title: "Feature 4.1: Tradeoff analysis command"
+        priority: 2
+        user_story: "As a developer facing a design decision, I want to run /code:tradeoff so that I can systematically evaluate options using structured tradeoff frameworks"
+        acceptance_criteria:
+          - "/code:tradeoff command is invokable and produces structured tradeoff analysis"
+          - "Command walks through relevant tradeoff dimensions from software-tradeoffs skill"
+          - "Command asks clarifying questions about the specific decision context"
+          - "Output includes decision recommendation with rationale"
+        tracer_strategy:
+          minimal_flow: "User invokes /code:tradeoff → Command loads skill context → Asks questions → Produces analysis"
+          layers: "Command markdown → software-tradeoffs skill → Interactive dialog → Structured output"
+          expansion: "History tracking, decision log integration with /line:decision"
+        blocks: ["feature-4.2"]
+        bdd_tests:
+          - test: "Validate_Tradeoff_Command"
+            scenarios:
+              - "Command_is_invokable_and_produces_output"
+              - "Command_references_tradeoff_frameworks"
+              - "Command_asks_clarifying_questions"
+              - "Output_includes_recommendation_with_rationale"
+        smoke_tests:
+          - "/code:tradeoff is listed in available commands"
+          - "Command produces structured tradeoff analysis"
+          - "Command references specific tradeoff dimensions"
+
+        tasks:
+          - title: "Create /code:tradeoff command"
+            priority: 2
+            tracer: "First command — proves command authoring pattern works for code-spice"
+            description: |
+              - Study line-cook command format (YAML frontmatter + markdown instructions)
+              - Reference existing commands: ~/code/line-cook/plugins/claude-code/commands/
+              - Create commands/tradeoff.md with:
+                - Frontmatter: name, description, allowed-tools
+                - Process steps:
+                  1. Ask user to describe the design decision
+                  2. Identify relevant tradeoff dimensions from software-tradeoffs skill
+                  3. Walk through each relevant dimension with questions
+                  4. Present structured analysis with pros/cons/recommendation
+                  5. Optionally record decision via /line:decision
+              - Include tradeoff dimension catalog:
+                - Duplication vs DRY
+                - Flexibility vs complexity (YAGNI)
+                - Simplicity vs extensibility
+                - Performance vs readability
+                - Build vs buy
+                - Consistency vs availability (distributed)
+            deliverable: "commands/tradeoff.md"
+            reference: "~/code/line-cook/plugins/claude-code/commands/"
+            tdd: true
+
+      - id: feature-4.2
+        title: "Feature 4.2: Code smell detection command"
+        priority: 2
+        user_story: "As a developer, I want to run /code:smell on my recent changes so that I can detect implementation-level antipatterns before code review"
+        acceptance_criteria:
+          - "/code:smell command scans recent changes (git diff) for code antipatterns"
+          - "Detection references patterns from code-antipatterns skill"
+          - "Output categorizes findings by severity (critical, warning, note)"
+          - "Each finding includes the antipattern name, location, and suggested fix"
+        tracer_strategy:
+          minimal_flow: "User invokes /code:smell → Command reads git diff → Scans for antipatterns → Reports findings"
+          layers: "Command markdown → git diff analysis → code-antipatterns skill → Categorized report"
+          expansion: "Custom rule configuration, ignore lists, integration with /line:serve"
+        blocks: ["feature-4.3"]
+        bdd_tests:
+          - test: "Validate_Smell_Command"
+            scenarios:
+              - "Command_scans_recent_changes"
+              - "Detection_references_antipattern_catalog"
+              - "Output_categorized_by_severity"
+              - "Findings_include_name_location_fix"
+        smoke_tests:
+          - "/code:smell is listed in available commands"
+          - "Command analyzes git diff output"
+          - "Output includes severity-categorized findings"
+
+        tasks:
+          - title: "Create /code:smell command"
+            priority: 2
+            tracer: "Detection command — applies antipattern knowledge to real code"
+            description: |
+              - Create commands/smell.md with:
+                - Frontmatter: name, description, allowed-tools (Bash for git, Read, Grep)
+                - Process steps:
+                  1. Collect recent changes (git diff, or specified files)
+                  2. Read changed files
+                  3. Scan for antipatterns from code-antipatterns skill:
+                     - Surprise patterns (magic values, unexpected side effects, null misuse)
+                     - Misuse patterns (mutable where immutable needed, missing access control)
+                     - Complexity patterns (deep nesting, god functions, premature abstraction)
+                     - Premature patterns (premature optimization, premature generality)
+                  4. Categorize findings: Critical / Warning / Note
+                  5. Report with: pattern name, file:line, description, suggested fix
+                  6. Summary statistics
+              - Reference code-antipatterns skill for pattern definitions
+            deliverable: "commands/smell.md"
+            tdd: true
+
+      - id: feature-4.3
+        title: "Feature 4.3: Review preparation command and quality critic agent"
+        priority: 2
+        user_story: "As a developer, I want to prepare for code review with /code:review-prep and have a code-quality-critic agent enhance /line:serve so that my code reviews are more thorough and effective"
+        acceptance_criteria:
+          - "/code:review-prep generates a context-aware self-review checklist"
+          - "Checklist draws from code-review and code-antipatterns skills"
+          - "code-quality-critic agent is available as a subagent during /line:serve"
+          - "Agent applies book-sourced quality criteria to review changed code"
+        tracer_strategy:
+          minimal_flow: "User invokes /code:review-prep → Generates checklist. Agent loads during /serve → Reviews with quality criteria"
+          layers: "Command → code-review skill. Agent → code-antipatterns + code-readability skills"
+          expansion: "Team Working Agreement templates, review metrics tracking"
+        bdd_tests:
+          - test: "Validate_Review_Prep_And_Agent"
+            scenarios:
+              - "Review_prep_generates_context_aware_checklist"
+              - "Checklist_references_review_and_antipattern_skills"
+              - "Agent_is_available_as_subagent"
+              - "Agent_applies_quality_criteria_to_code"
+        smoke_tests:
+          - "/code:review-prep is listed in available commands"
+          - "Command generates structured checklist"
+          - "agents/code-quality-critic.md has valid frontmatter"
+          - "Agent references relevant skills"
+
+        tasks:
+          - title: "Create /code:review-prep command"
+            priority: 2
+            tracer: "Review prep — bridges code-review skill knowledge to actionable checklist"
+            description: |
+              - Create commands/review-prep.md with:
+                - Frontmatter: name, description, allowed-tools (Bash for git, Read, Grep)
+                - Process steps:
+                  1. Analyze recent changes (git diff)
+                  2. Identify change categories (new code, refactoring, bug fix, feature)
+                  3. Generate checklist based on change type:
+                     - New code: readability, naming, error handling, test coverage
+                     - Refactoring: behavior preservation, pattern application
+                     - Bug fix: root cause addressed, regression test added
+                  4. Add context-specific items from relevant skills
+                  5. Output formatted checklist for self-review
+              - Reference code-review skill for checklist items
+              - Reference code-antipatterns for what to watch for
+            deliverable: "commands/review-prep.md"
+            tdd: true
+
+          - title: "Create code-quality-critic agent"
+            priority: 2
+            depends_on: ["Create /code:review-prep command"]
+            tracer: "Quality critic agent — enhanced reviewer for serve phase"
+            description: |
+              - Study line-cook agent format: ~/code/line-cook/plugins/claude-code/agents/
+              - Create agents/code-quality-critic.md with:
+                - Frontmatter: name, description, tools
+                - Agent instructions:
+                  1. Read all changed files
+                  2. Apply code quality criteria from skills:
+                     - Readability (code-readability)
+                     - Naming quality (code-naming)
+                     - Error handling strategy (error-handling-patterns)
+                     - Antipattern detection (code-antipatterns)
+                     - Test quality (code-testing-quality)
+                  3. Categorize findings by severity
+                  4. Report issues with specific line references
+                  5. Suggest fixes referencing refactoring-patterns skill
+              - Agent should complement, not replace, existing sous-chef agent
+            deliverable: "agents/code-quality-critic.md"
+            reference: "~/code/line-cook/plugins/claude-code/agents/"
+            tdd: true
+
+  - id: phase-5
+    title: "Phase 5: Documentation & Release"
+    description: "Create documentation, AGENTS.md, and prepare marketplace entry for Line Cook"
+    duration: "1-2 sessions"
+
+    features:
+      - id: feature-5.1
+        title: "Feature 5.1: Plugin documented and marketplace-ready"
+        priority: 2
+        user_story: "As a Line Cook user, I want to discover code-spice in the marketplace and understand what it provides so that I can install and use it effectively"
+        acceptance_criteria:
+          - "README.md explains what code-spice does, how to install, and what skills/commands/agent are included"
+          - "AGENTS.md provides development workflow guidance"
+          - "CHANGELOG.md documents v0.1.0 release"
+          - "Marketplace entry ready for Line Cook PR"
+        tracer_strategy:
+          minimal_flow: "Write README → Write AGENTS.md → Write CHANGELOG → Prepare marketplace entry"
+          layers: "Documentation → Plugin metadata → Marketplace registration"
+          expansion: "Tutorial walkthrough (like game-spice/docs/tutorial.md), release automation"
+        bdd_tests:
+          - test: "Validate_Documentation_And_Release"
+            scenarios:
+              - "README_covers_installation_skills_commands_agent"
+              - "AGENTS_provides_development_guidance"
+              - "CHANGELOG_documents_v0_1_0"
+              - "Marketplace_entry_ready"
+        smoke_tests:
+          - "README.md exists with installation instructions"
+          - "AGENTS.md exists with workflow guidance"
+          - "CHANGELOG.md exists with v0.1.0 entry"
+          - "Marketplace JSON entry is valid"
+
+        tasks:
+          - title: "Create README.md"
+            priority: 2
+            tracer: "Primary documentation — user-facing description of the plugin"
+            description: |
+              - Follow game-spice README pattern:
+                - What Is This: quick explanation
+                - Quick Start: installation instructions
+                - What It Looks Like: example planning conversation
+                - Skills reference table (10 skills with descriptions)
+                - Commands reference table (3 commands with descriptions)
+                - Agent description
+                - When to use / when to skip
+                - Source material attribution
+                - Local development instructions
+            deliverable: "README.md"
+            reference: "~/code/game-spice/README.md"
+            tdd: true
+
+          - title: "Create AGENTS.md and CHANGELOG.md"
+            priority: 2
+            depends_on: ["Create README.md"]
+            tracer: "Development docs — workflow guidance and version history"
+            description: |
+              - AGENTS.md: development workflow using beads, skill authoring conventions
+              - CHANGELOG.md following game-spice pattern:
+                - v0.1.0: initial release with all 10 skills, 3 commands, 1 agent
+                - List all skills, commands, agent
+            deliverable: "AGENTS.md, CHANGELOG.md"
+            reference: "~/code/game-spice/AGENTS.md"
+            tdd: true
+
+          - title: "Prepare marketplace entry"
+            priority: 3
+            depends_on: ["Create AGENTS.md and CHANGELOG.md"]
+            tracer: "Distribution — proves plugin is discoverable in Line Cook marketplace"
+            description: |
+              - Draft marketplace.json entry for code-spice:
+                - name: code-spice
+                - source: GitHub URL
+                - description: what it provides
+                - category: domain-knowledge
+                - tags: code-quality, spice, line-cook, etc.
+              - Save as docs/marketplace-entry.json for future PR to line-cook repo
+            deliverable: "docs/marketplace-entry.json"
+            reference: "~/code/line-cook/.claude-plugin/marketplace.json"
+            tdd: true
