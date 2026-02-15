@@ -1,0 +1,11 @@
+DATE       | PHASE      | DECISION                                                | RATIONALE
+2026-02-15 | brainstorm | Separate Phase 6 epic, not integrated into Phases 2-4   | Existing MLP is finalized and partially underway; separate phase avoids re-scoping
+2026-02-15 | brainstorm | Three skills: code-yagni, code-pruning, code-scope-boundaries | Each covers a distinct aspect: prevention, cure, project-level analysis
+2026-02-15 | brainstorm | Subsume deferred code-deletion-safety into code-pruning  | code-pruning is a superset; avoids future duplication
+2026-02-15 | brainstorm | /code:prune provides guidance, not automated tooling     | Knowledge plugin pattern — tools change; frameworks persist
+2026-02-15 | brainstorm | Synthesize from existing books + new research sources    | FLoC Ch 9/12 and SM&T Ch 1/4 cover some; Fowler/Meta/GS fill gaps
+2026-02-15 | scope      | Sequential feature deps: 6.1 → 6.2 → 6.3               | YAGNI concepts needed before pruning; both needed before prune command
+2026-02-15 | scope      | Separate menu plan file (menu-plan-yagni-pruning.yaml)   | Independent epic; avoids modifying the finalized main menu plan
+2026-02-15 | scope      | 3 features, 4 tasks, 3-4 sessions                       | Similar scope to Phase 3 or 4; each skill is a single focused task
+2026-02-15 | finalize   | Epic bead cs-bqx with features cs-v3t, cs-ywf, cs-p9y   | All beads created with proper hierarchy and dependencies
+2026-02-15 | finalize   | 3 BDD + 4 TDD test specs created                        | Language-agnostic specs guide implementation during /cook
