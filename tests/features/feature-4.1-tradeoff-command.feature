@@ -27,3 +27,13 @@ Feature: Tradeoff analysis command
     Then it should produce a structured analysis
     And it should include pros and cons for each option
     And it should include a recommendation with rationale
+
+  Scenario: Command without YAML frontmatter should fail validation
+    Given a tradeoff command file without YAML frontmatter
+    When I validate it against command requirements
+    Then validation should report missing frontmatter
+
+  Scenario: Command missing AskUserQuestion in allowed-tools should be flagged
+    Given a tradeoff command without AskUserQuestion in allowed-tools
+    When I validate it against command requirements
+    Then validation should report the missing tool as required for interactive flow
