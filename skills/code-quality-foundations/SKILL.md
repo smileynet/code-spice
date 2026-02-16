@@ -98,7 +98,7 @@ Readability is the foundation pillar — every other quality depends on engineer
 - Shallow nesting (restructure conditionals, extract functions)
 - Functions that read like single sentences
 
-`(see code-readability -> Naming Conventions, Comment Strategy)`
+`(see code-readability -> Naming and Structure)` `(see code-readability -> Comment Strategy)`
 
 ### Avoid Surprises (POLA)
 
