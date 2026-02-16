@@ -1,0 +1,242 @@
+# code-spice Phase 6: YAGNI & Code Pruning
+# "Subtractive" complement to the constructive MLP (Phases 1-5)
+# Skills for preventing bloat, detecting dead code, and evaluating project scope
+# Sources: FLoC Ch 9/12, SM&T Ch 1/4, GC/BC Ch 6-7 + Fowler, Meta SCARF, Goldman Sachs
+
+phases:
+  - id: phase-6
+    title: "Phase 6: YAGNI & Code Pruning"
+    description: "Create skills and command for preventing feature bloat, detecting and removing dead code, and evaluating project scope boundaries"
+    duration: "3-4 sessions"
+
+    features:
+      - id: feature-6.1
+        title: "Feature 6.1: YAGNI and scope analysis during planning phases"
+        priority: 2
+        user_story: "As a Line Cook user, I want YAGNI decision frameworks during /line:brainstorm and /line:scope and scope boundary analysis during /line:architecture-audit so that I avoid building unnecessary features and can identify when a project needs splitting"
+        acceptance_criteria:
+          - "code-yagni skill activates when planning involves new features, design decisions, or 'should we build this' questions"
+          - "code-scope-boundaries skill activates during architecture-audit when evaluating project structure and scope"
+          - "YAGNI skill includes the four costs framework, speculative generality detection, and build-vs-not-build decision table"
+          - "Scope boundaries skill includes cohesion test, split-vs-keep framework, and scope creep warning signs"
+          - "Both skills cross-reference existing code-antipatterns, software-tradeoffs, and refactoring-patterns skills"
+        tracer_strategy:
+          minimal_flow: "Read source material → Extract YAGNI frameworks → Synthesize SKILL.md → Validate activation → Verify cross-references"
+          layers: "Book content + research → Decision frameworks → SKILL.md frontmatter + content → Keyword activation"
+          expansion: "Architecture-level antipatterns, organizational scope management, Conway's Law analysis"
+        blocks: ["feature-6.2"]
+        bdd_tests:
+          - test: "Validate_YAGNI_And_Scope_Skills"
+            scenarios:
+              - "YAGNI_skill_covers_four_costs_framework"
+              - "YAGNI_skill_has_build_vs_not_build_decision_table"
+              - "YAGNI_skill_includes_speculative_generality_detection"
+              - "Scope_boundaries_skill_has_cohesion_test"
+              - "Scope_boundaries_skill_has_split_vs_keep_framework"
+              - "Scope_boundaries_skill_includes_scope_creep_warning_signs"
+              - "Both_skills_cross_reference_existing_MLP_skills"
+        smoke_tests:
+          - "skills/code-yagni/SKILL.md has valid frontmatter with activation keywords"
+          - "skills/code-scope-boundaries/SKILL.md has valid frontmatter with activation keywords"
+          - "YAGNI skill is 200-400 lines with progressive disclosure"
+          - "Scope boundaries skill is 200-400 lines with progressive disclosure"
+          - "Both skills contain decision tables and cross-references"
+
+        tasks:
+          - title: "Create code-yagni skill"
+            priority: 2
+            tracer: "Prevention framework — proves YAGNI can be operationalized into actionable skill"
+            description: |
+              - Read Five Lines of Code Ch 9 (deleting code), Ch 12 (avoid premature generality)
+              - Read Software Mistakes & Tradeoffs Ch 1 (when duplication is OK), Ch 4 (flexibility vs complexity)
+              - Research: Fowler's YAGNI article (four costs framework), Kohavi et al. (1/3 features succeed)
+              - Synthesize into SKILL.md covering:
+                - Quick Reference: "Should I build this?" decision table
+                - The four costs of presumptive features (build, delay, carry, repair)
+                - YAGNI vs good design: what YAGNI does NOT mean (skip tests, avoid clean code)
+                - Speculative generality detection signals:
+                  - Classes whose only consumers are tests
+                  - Interfaces with one implementation
+                  - Factory methods that build one type
+                  - Extension points nobody uses
+                - "Build vs. not build" decision framework:
+                  - Is there a concrete requirement today?
+                  - What's the cost of adding it later?
+                  - Is the codebase malleable enough for later addition?
+                - Bloat antipatterns: gold plating, premature abstraction, kitchen sink
+                - Statistical case: 2/3 of planned features don't improve their metrics
+              - Cross-references: code-antipatterns, software-tradeoffs, refactoring-patterns
+              - Target: 250-350 lines
+            deliverable: "skills/code-yagni/SKILL.md"
+            tdd: true
+
+          - title: "Create code-scope-boundaries skill"
+            priority: 2
+            depends_on: ["Create code-yagni skill"]
+            tracer: "Project-level analysis — extends YAGNI from features to project scope"
+            description: |
+              - Read Software Mistakes & Tradeoffs Ch 4 (flexibility vs complexity at system level)
+              - Research: Martin Fowler (breaking monoliths), SRP at project level, Strangler Fig pattern
+              - Research: Feature bloat warning signs, Conway's Law
+              - Synthesize into SKILL.md covering:
+                - Quick Reference: scope health checklist
+                - The cohesion test: SRP applied at project level
+                  - "Gather things that change for the same reasons"
+                  - Different audiences, cadences, or deployment models → different projects
+                - Feature belonging assessment:
+                  - Does this feature serve the same user?
+                  - Does it change on the same cadence?
+                  - Does it share the same deployment model?
+                - Scope creep warning signs:
+                  - Expanding scope without schedule adjustment
+                  - "While we're at it" additions
+                  - The utils/helpers folder is the largest folder
+                  - New developers take increasingly long to onboard
+                  - No feature ever gets rejected
+                - Split-vs-keep decision framework:
+                  - When to split (different teams, cadences, tech requirements, low cohesion)
+                  - When NOT to split (small project, unclear boundaries, ideological splitting)
+                - Safe splitting patterns:
+                  - Strangler Fig: extract least-coupled pieces first
+                  - Domain modeling before extraction
+                  - Align with team boundaries (Conway's Law)
+              - Cross-references: code-yagni, software-tradeoffs
+              - Target: 250-350 lines
+            deliverable: "skills/code-scope-boundaries/SKILL.md"
+            tdd: true
+
+      - id: feature-6.2
+        title: "Feature 6.2: Dead code pruning guidance during maintenance"
+        priority: 2
+        user_story: "As a developer maintaining a growing codebase, I want dead code detection strategies and safe removal guidance during architecture audits and implementation so that I can systematically reduce bloat"
+        acceptance_criteria:
+          - "code-pruning skill activates during architecture-audit when evaluating codebase health or during cook when performing cleanup"
+          - "Skill covers both static and dynamic dead code detection approaches"
+          - "Skill includes language-specific tool recommendations with date stamps"
+          - "Skill provides a safe removal process (identify → verify → deprecate → delete → test)"
+          - "Skill covers dependency pruning and commented-out code elimination"
+        tracer_strategy:
+          minimal_flow: "Read source material → Extract detection strategies → Research tools → Synthesize SKILL.md → Validate activation"
+          layers: "Book content + research → Detection/removal frameworks → SKILL.md → Architecture-audit/cook activation"
+          expansion: "Language-specific supplemental files, CI/CD integration guides, automated pruning workflows"
+        blocks: ["feature-6.3"]
+        bdd_tests:
+          - test: "Validate_Pruning_Skill"
+            scenarios:
+              - "Pruning_skill_covers_static_and_dynamic_detection"
+              - "Pruning_skill_has_language_specific_tool_recommendations"
+              - "Pruning_skill_has_safe_removal_process"
+              - "Pruning_skill_covers_dependency_pruning"
+              - "Pruning_skill_addresses_commented_out_code"
+        smoke_tests:
+          - "skills/code-pruning/SKILL.md has valid frontmatter with activation keywords"
+          - "Pruning skill is 200-400 lines with progressive disclosure"
+          - "Skill contains tool recommendation table with date stamps"
+          - "Skill contains safe removal process steps"
+
+        tasks:
+          - title: "Create code-pruning skill"
+            priority: 2
+            tracer: "Removal process — the cure that complements YAGNI's prevention"
+            description: |
+              - Read Five Lines of Code Ch 9 (deleting code — when and how)
+              - Read Five Lines of Code Ch 12 (making bad code look bad — visibility as first step)
+              - Read Good Code Bad Code Ch 6-7 (antipatterns that become dead weight)
+              - Research: Meta SCARF framework (100M+ lines removed), Goldman Sachs code relevance practices
+              - Research: Kent C. Dodds on commented-out code, language-specific tools (Knip, Vulture, depcheck, PMD)
+              - Synthesize into SKILL.md covering:
+                - Quick Reference: pruning checklist and detection approach table
+                - Dead code detection strategies:
+                  - Static analysis: AST/dependency graph analysis, limitations (reflection, eval)
+                  - Dynamic analysis: runtime instrumentation, production logging, limitations (coverage)
+                  - Combined approach: Meta's SCARF pattern (static + runtime + textual search)
+                - Language-specific tool recommendations (date-stamped 2026-02):
+                  - Python: Vulture, deadcode, autoflake
+                  - JS/TS: Knip (module graph analysis, 100+ plugins), depcheck
+                  - Java: PMD, Code Inventory (runtime-based)
+                  - Go: Grind
+                  - Multi-language: SonarQube
+                - Safe removal process:
+                  1. Identify candidates (static analysis + coverage reports)
+                  2. Verify with dynamic data (log suspected dead code in production, 1-4 weeks)
+                  3. Mark for deprecation (@Deprecated or equivalent)
+                  4. Delete, don't comment out (git log -G retrieves deleted code)
+                  5. Run tests after removal
+                  6. Schedule periodic audits
+                - Dependency pruning: unused direct deps, transitive dep awareness, false positive handling
+                - Commented-out code elimination: version control is your safety net
+                - Bloat metrics: dead code percentage, dependency count, inverse churn rate, build time trends
+                - Lava flow antipattern: code nobody is sure if it's still needed
+              - Cross-references: code-yagni, refactoring-patterns, code-antipatterns
+              - Target: 300-400 lines
+            deliverable: "skills/code-pruning/SKILL.md"
+            tdd: true
+
+      - id: feature-6.3
+        title: "Feature 6.3: Interactive pruning analysis command"
+        priority: 2
+        user_story: "As a developer, I want to run /code:prune on my codebase so that I get a structured analysis of dead code, unused dependencies, speculative abstractions, and scope boundary issues with a prioritized removal plan"
+        acceptance_criteria:
+          - "/code:prune command is invokable and produces structured pruning analysis"
+          - "Command walks through detection categories: dead code, unused dependencies, speculative abstractions, scope issues"
+          - "Command asks clarifying questions about the codebase context and languages used"
+          - "Output includes prioritized removal candidates with safety assessment and recommended approach"
+          - "Command references all three YAGNI/pruning skills for its frameworks"
+        tracer_strategy:
+          minimal_flow: "User invokes /code:prune → Command asks about codebase → Walks through detection categories → Produces prioritized removal plan"
+          layers: "Command markdown → code-yagni + code-pruning + code-scope-boundaries skills → Interactive dialog → Structured report"
+          expansion: "Automated tool invocation, CI integration, scheduled pruning reports"
+        bdd_tests:
+          - test: "Validate_Prune_Command"
+            scenarios:
+              - "Command_is_invokable_and_produces_output"
+              - "Command_walks_through_detection_categories"
+              - "Command_asks_clarifying_questions"
+              - "Output_includes_prioritized_removal_candidates"
+              - "Output_includes_safety_assessment"
+        smoke_tests:
+          - "/code:prune is listed in available commands"
+          - "Command produces structured pruning analysis"
+          - "Command references YAGNI, pruning, and scope boundary frameworks"
+          - "Output includes prioritized findings with safety ratings"
+
+        tasks:
+          - title: "Create /code:prune command"
+            priority: 2
+            tracer: "Interactive pruning — applies all three skills' knowledge to a real codebase"
+            description: |
+              - Study existing code-spice command patterns (commands/tradeoff.md, commands/smell.md)
+              - Create commands/prune.md with:
+                - Frontmatter: name, description, allowed-tools (Bash for git, Read, Grep, Glob)
+                - Process steps:
+                  1. Ask about codebase context:
+                     - Primary language(s)
+                     - Project age and team size
+                     - Known pain points (slow builds, hard onboarding, etc.)
+                  2. Dead code scan (from code-pruning skill):
+                     - Recommend language-appropriate tools
+                     - Guide user through running static analysis
+                     - Help interpret results (false positives from dynamic dispatch)
+                  3. Unused dependency check (from code-pruning skill):
+                     - Check dependency manifest (package.json, requirements.txt, etc.)
+                     - Identify direct deps not imported anywhere
+                     - Flag deps with better alternatives
+                  4. Speculative abstraction detection (from code-yagni skill):
+                     - Search for one-implementation interfaces
+                     - Find unused factory methods, extension points
+                     - Identify "just in case" code patterns
+                  5. Scope boundary analysis (from code-scope-boundaries skill):
+                     - Apply cohesion test to major modules
+                     - Check for features serving different audiences/cadences
+                     - Assess the utils/helpers folder ratio
+                  6. Commented-out code review:
+                     - Grep for comment blocks that look like disabled code
+                     - Assess age via git blame
+                  7. Produce prioritized removal plan:
+                     - Categorize by safety: Safe (dead code), Moderate (unused deps), Risky (live but questionable)
+                     - Categorize by effort: Quick wins, Medium effort, Major refactor
+                     - Recommend removal order (safe + quick wins first)
+              - Reference all three skills for frameworks and decision tables
+            deliverable: "commands/prune.md"
+            reference: "~/code/line-cook/plugins/claude-code/commands/"
+            tdd: true

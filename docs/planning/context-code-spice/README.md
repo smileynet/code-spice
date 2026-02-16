@@ -1,6 +1,6 @@
 # Planning Context: code-spice
 
-**Status:** finalized
+**Status:** archived
 **Epic:** cs-jwh (Phase 1), cs-ilx (Phase 2), cs-n4l (Phase 3), cs-hdb (Phase 4), cs-hkf (Phase 5)
 **Created:** 2026-02-13
 

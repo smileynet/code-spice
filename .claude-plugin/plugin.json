@@ -1,0 +1,26 @@
+{
+  "name": "code",
+  "description": "Code quality spice for Line Cook — quality pillars, abstraction layers, implementation guidance, antipattern detection, code review, testing practices, tradeoff analysis, and smell detection",
+  "version": "0.1.0",
+  "author": {
+    "name": "smileynet"
+  },
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "spice",
+    "line-cook",
+    "abstraction",
+    "antipatterns",
+    "code-review",
+    "testing",
+    "refactoring",
+    "implementation",
+    "architecture",
+    "plan-audit",
+    "tradeoff-analysis",
+    "code-smells",
+    "commands",
+    "agents"
+  ]
+}
