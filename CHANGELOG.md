@@ -5,7 +5,9 @@ All notable changes to Code Spice will be documented in this file.
 ## [Unreleased]
 
 ### Added
-- Installable plugin with first knowledge skill (cs-jwh.1)
+- Phase 1: Plugin Foundation & Tracer (cs-jwh)
+  - Installable Claude Code plugin with code quality knowledge
+  - Features: Installable plugin with first knowledge skill (cs-jwh.1)
   - `.claude-plugin/plugin.json` manifest with code quality keywords
   - `code-quality-foundations` skill synthesizing Good Code Bad Code Ch 1-2 and Software Mistakes & Tradeoffs Ch 1
   - Quality pillars, abstraction layers, tradeoff thinking, and decision tables
