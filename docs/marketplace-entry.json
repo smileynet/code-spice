@@ -1,0 +1,10 @@
+{
+  "name": "code-spice",
+  "source": {
+    "source": "url",
+    "url": "https://github.com/smileynet/code-spice.git"
+  },
+  "description": "Code quality spice — quality pillars, abstraction layers, antipattern detection, refactoring patterns, error handling, and tradeoff analysis",
+  "category": "domain-knowledge",
+  "tags": ["code-quality", "spice", "antipatterns", "refactoring", "code-review", "testing"]
+}
