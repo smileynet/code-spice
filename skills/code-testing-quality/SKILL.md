@@ -14,7 +14,7 @@ Principles and practices for writing tests that are reliable, maintainable, and 
 Use during code review and the taster agent's RED phase:
 
 - [ ] Each test verifies one behavior (single assertion theme)
-- [ ] Tests are independent — no shared mutable state, any execution order
+- [ ] Tests are independent — no shared mutable state, runs in any order
 - [ ] Test names describe the scenario and expected outcome
 - [ ] Arrange/Act/Assert sections are visually distinct
 - [ ] No logic in tests (no conditionals, loops, or try-catch)
@@ -31,6 +31,48 @@ Use during code review and the taster agent's RED phase:
 | **Isolated** | No test affects another; runs alone or in any order | Tests pass individually but fail together |
 | **Repeatable** | Same result every time, on any machine | "Works on my machine," intermittent failures |
 | **Clear** | Failure message pinpoints the problem | Must read test code to understand what broke |
+
+## Test Strategy
+
+### Planning Your Testing Approach
+
+Before writing tests, decide *what* to test and *at what level*. A test strategy answers three questions:
+
+1. **Where does the risk live?** — Focus testing effort on code where failures cost the most (business logic, data integrity, security boundaries)
+2. **What level of test gives the best signal?** — Match test type to what you're verifying (see Test Pyramid below)
+3. **What's the test double strategy?** — Real objects internally, fakes/mocks at architectural boundaries
+
+### Applying the Test Pyramid
+
+| Layer | What to Test Here | Signal It Provides |
+|-------|------------------|--------------------|
+| **Unit** | Pure logic, calculations, transformations, domain rules | Fast, precise — "this function is correct" |
+| **Integration** | Database queries, API clients, service wiring, middleware | Realistic — "these components work together" |
+| **E2E** | Critical user journeys (login, checkout, data export) | Confidence — "the system works end-to-end" |
+
+**Strategy heuristic:** Start with unit tests for business logic. Add integration tests at boundaries where bugs actually happen. Add E2E tests only for the critical paths that must never break.
+
+### TDD as a Design Tool
+
+Test-driven development isn't just a testing technique — it's a design feedback loop:
+
+1. **RED** — Write a failing test that describes the next behavior
+2. **GREEN** — Write the minimum code to pass
+3. **REFACTOR** — Clean up while tests protect you
+
+**When TDD helps most:** New features with clear behavior, complex algorithms, code you need to understand before changing. **When to skip strict TDD:** Exploratory prototypes, UI layout, glue code with obvious implementations.
+
+### Choosing Test Types by Situation
+
+| Situation | Test Type | Why |
+|-----------|----------|-----|
+| Pure function with clear inputs/outputs | Unit test | Fast, precise feedback |
+| Database query or ORM logic | Integration test with real/fake DB | Verifies query correctness |
+| API endpoint handler | Integration test | Tests routing, serialization, middleware |
+| Complex business rule with many cases | Parameterized unit test | Covers combinations efficiently |
+| Critical user journey (login, checkout) | E2E test | Validates full stack works together |
+| Service-to-service communication | Contract test | Catches interface drift early |
+| Function with mathematical invariants | Property-based test | Finds edge cases humans miss |
 
 ## Unit Testing Principles
 
@@ -80,7 +122,7 @@ Both are heuristics. Choose based on where your business logic lives and what gi
 
 ### Arrange-Act-Assert (AAA)
 
-The standard unit test structure. Each section should be visually separable:
+The standard unit test structure. Each section should be visually distinct:
 
 ```
 // Arrange — set up preconditions
@@ -141,7 +183,7 @@ Good test names are sentences that describe what's being tested:
 | `should [outcome] when [condition]` | `should reject withdrawal when funds insufficient` | Behavior-focused tests |
 | `given_when_then` | `givenInsufficientFunds_whenWithdraw_thenThrows` | BDD-style tests |
 
-**Anti-pattern:** `test1`, `testWithdraw`, `testHappyPath` — these names tell you nothing when they fail.
+**Antipattern:** `test1`, `testWithdraw`, `testHappyPath` — these names tell you nothing when they fail.
 
 **The failure message test:** When a test fails, can you understand the bug from the test name alone, without reading the test body? If yes, the name is good.
 
@@ -287,18 +329,6 @@ Contract tests complement, not replace, integration and E2E tests.
 </details>
 
 ## Decision Tables
-
-### "What Kind of Test Should I Write?"
-
-| Situation | Test Type | Rationale |
-|-----------|----------|-----------|
-| Pure function with clear inputs/outputs | Unit test | Fast, precise feedback |
-| Database query or ORM logic | Integration test with real/fake DB | Verifies query correctness |
-| API endpoint handler | Integration test | Tests routing, serialization, middleware |
-| Complex business rule with many cases | Parameterized unit test | Covers combinations efficiently |
-| Critical user journey (login, checkout) | E2E test | Validates full stack works together |
-| Service-to-service communication | Contract test | Catches interface drift early |
-| Function with mathematical invariants | Property-based test | Finds edge cases humans miss |
 
 ### "Why Is This Test Bad?"
 
