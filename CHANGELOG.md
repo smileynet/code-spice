@@ -5,6 +5,11 @@ All notable changes to Code Spice will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- Feature 4.2: Code smell detection command (cs-hdb.2)
+  - `/code:smell` command for detecting implementation-level antipatterns
+  - 20-pattern antipattern catalog across 4 categories: Surprise, Misuse, Complexity, Premature
+  - Severity classification: Critical, Warning, Note with verdict logic
+  - Scans git diff or user-specified files with structured report output
 - Feature 4.1: Tradeoff analysis command (cs-hdb.1)
   - `/code:tradeoff` command for systematic design decision analysis
   - Structured 5-step process: gather context, identify dimensions, evaluate, analyze, record
