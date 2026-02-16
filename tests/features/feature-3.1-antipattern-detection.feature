@@ -30,3 +30,23 @@ Feature: Antipattern detection during plan-audit
     Then it should reference /line:plan-audit workflow
     And it should check for error handling strategy completeness
     And it should check for naming and readability considerations
+    And it should include a build-readiness decision table
+    And it should include a quick pre-implementation gate checklist
+
+  Scenario: Antipatterns skill without YAML frontmatter should fail validation
+    Given a SKILL.md file without YAML frontmatter delimiters
+    When the smoke test validates the antipatterns skill
+    Then it should report a frontmatter validation failure
+    And the skill should not be considered valid
+
+  Scenario: Antipattern entry missing symptoms should be flagged
+    Given an antipattern entry without a Symptoms section
+    When the smoke test validates antipattern completeness
+    Then it should flag the entry as incomplete
+    And the symptom count check should fail
+
+  Scenario: Plan audit scorecard with fewer than 10 checks should be flagged
+    Given a plan audit skill with fewer than 10 scorecard items
+    When the smoke test validates scorecard completeness
+    Then it should report insufficient scorecard coverage
+    And the scorecard check should fail
