@@ -5,6 +5,12 @@ All notable changes to Code Spice will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- Feature 4.1: Tradeoff analysis command (cs-hdb.1)
+  - `/code:tradeoff` command for systematic design decision analysis
+  - Structured 5-step process: gather context, identify dimensions, evaluate, analyze, record
+  - 6 tradeoff dimensions: DRY, flexibility, extensibility, performance, build-vs-buy, consistency
+  - Integration with `/line:decision` for optional ADR recording
+  - Updated architecture.md constraint to reflect commands and agents as additive layers
 - Phase 1: Plugin Foundation & Tracer (cs-jwh)
   - Installable Claude Code plugin with code quality knowledge
   - Features: Installable plugin with first knowledge skill (cs-jwh.1)
