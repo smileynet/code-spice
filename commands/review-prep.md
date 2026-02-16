@@ -5,7 +5,7 @@ allowed-tools: Read, Glob, Grep, Bash
 
 ## Summary
 
-**Prepare for code review with a tailored self-review checklist.** Analyzes recent changes, classifies the type of work, and generates a checklist drawing from the code-review and code-antipatterns skills.
+**Prepare for code review with a tailored self-review checklist.** Analyzes recent changes, classifies the type of work, and generates a checklist drawing from the code-review, code-quality-foundations, and code-antipatterns skills.
 
 **Arguments:** `$ARGUMENTS` (optional) - Git ref range (e.g., `HEAD~5..HEAD`). Defaults to uncommitted + last 3 commits.
 
@@ -70,11 +70,11 @@ A change set can have multiple categories (e.g., "Feature enhancement" + "Test c
 
 ### Step 4: Build the Checklist
 
-Generate a checklist with three sections: **Universal items** (always included), **Category-specific items** (based on Step 3), and **Antipattern scan items** (from skills).
+Generate a checklist with three sections: **Universal items** (always included), **Category-specific items** (based on Step 3), and **Antipattern scan items** (based on code-antipatterns skill).
 
 #### Universal Items (always included)
 
-From the **code-review** skill and **code-quality-foundations** skill — Code Quality Self-Review checklist `(see code-review -> Review Checklist)` `(see code-quality-foundations -> Code Quality Self-Review)`:
+From the **code-review** skill `(see code-review -> Review Checklist)` and **code-quality-foundations** skill `(see code-quality-foundations -> Code Quality Self-Review)`:
 
 ```
 UNIVERSAL CHECKS
