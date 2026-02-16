@@ -5,7 +5,7 @@
 >
 > code-spice is an **enhanced spice** — a domain knowledge addon for Line Cook that
 > provides skills (like game-spice) AND additive commands + an agent. It enhances
-> Line Cook's existing workflow, not replaces it.
+> Line Cook's existing workflow, doesn't replace it.
 
 ## Layers
 
@@ -28,7 +28,7 @@
 
 ## Constraints
 
-- No commands or agents — spices are pure knowledge
+- Commands and agents are additive — they enhance Line Cook's workflow, not replace it
 - Skills must activate via keyword matching in description field
 - Must follow game-spice's established plugin.json format
 - Content is synthesized knowledge, not copied text
