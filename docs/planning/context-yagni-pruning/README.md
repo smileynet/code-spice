@@ -1,6 +1,6 @@
 # Planning Context: yagni-pruning
 
-**Status:** finalized
+**Status:** archived
 **Epic:** cs-bqx (Phase 6)
 **Created:** 2026-02-15
 
