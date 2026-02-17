@@ -317,3 +317,4 @@ Amdahl's law applies to teams, not just processors. Shared libraries, shared dat
 - **code-antipatterns** — Patterns that seem good but introduce hidden tradeoffs `(see code-antipatterns -> Pattern Recognition)`
 - **refactoring-patterns** — Techniques for course-correcting after tradeoff decisions `(see refactoring-patterns -> When to Refactor)`
 - **code-readability** — Readability as a quality to trade against other properties `(see code-readability -> Naming and Structure)`
+- **code-yagni** — When "not yet" is the right answer to build-vs-not-build decisions `(see code-yagni -> Build-vs-Not-Build Decision Framework)`

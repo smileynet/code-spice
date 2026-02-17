@@ -363,3 +363,4 @@ Not every pattern match is a problem. Context determines whether a pattern is ha
 - **code-testing-quality** — Testing antipatterns and test quality `(see code-testing-quality -> Testing Antipatterns)`
 - **refactoring-patterns** — Techniques for fixing detected antipatterns `(see refactoring-patterns -> When to Refactor)`
 - **software-tradeoffs** — When a "pattern" is actually a context-dependent tradeoff `(see software-tradeoffs -> Analysis Framework)`
+- **code-yagni** — Detecting speculative generality and evaluating premature features `(see code-yagni -> Speculative Generality Detection)`
