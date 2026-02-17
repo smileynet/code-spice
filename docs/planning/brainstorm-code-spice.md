@@ -72,7 +72,7 @@ Software developers using Line Cook with Claude Code for any non-game coding pro
 
 - Skills must fit within Claude's context window (~800 token target per skill when loaded during `/cook`)
 - SKILL.md frontmatter `description` field controls keyword activation
-- Skills are pure knowledge (no commands, no agents)
+- Skills are pure knowledge; commands and agents are additive layers (added in Phase 4)
 - Cross-references use `(see code-X -> Section)` format
 - Plugin requires `.claude-plugin/plugin.json` with name `code-spice`
 

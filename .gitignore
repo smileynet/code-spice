@@ -1,0 +1,8 @@
+# Binary uploads (reference books - not distributable)
+uploads/
+
+# OS artifacts
+.DS_Store
+
+# Editor temp files
+*.swp
