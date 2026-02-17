@@ -364,3 +364,4 @@ Not every pattern match is a problem. Context determines whether a pattern is ha
 - **refactoring-patterns** — Techniques for fixing detected antipatterns `(see refactoring-patterns -> When to Refactor)`
 - **software-tradeoffs** — When a "pattern" is actually a context-dependent tradeoff `(see software-tradeoffs -> Analysis Framework)`
 - **code-yagni** — Detecting speculative generality and evaluating premature features `(see code-yagni -> Speculative Generality Detection)`
+- **code-pruning** — Safe removal process for lava flow and dead code detection strategies `(see code-pruning -> The Lava Flow Antipattern)`

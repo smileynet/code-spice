@@ -394,3 +394,4 @@ If you don't understand what the code does, refactoring won't help — you'll ju
 - **code-naming** — Naming refactored code, naming as documentation `(see code-naming -> Core Principles)`
 - **code-antipatterns** — Patterns that indicate refactoring is needed `(see code-antipatterns -> Pattern Recognition)`
 - **code-readability** — Readability as the primary goal of most refactoring `(see code-readability -> Naming and Structure)`
+- **code-pruning** — Systematic dead code detection and safe removal beyond Try Delete Then Compile `(see code-pruning -> Dead Code Detection)`
