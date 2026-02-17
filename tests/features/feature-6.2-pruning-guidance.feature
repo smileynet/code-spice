@@ -37,3 +37,16 @@ Feature: Dead code pruning guidance during maintenance
     When I check for commented-out code guidance
     Then it should explain why commented-out code should be deleted
     And it should reference version control as the safety net
+
+  Scenario: Pruning skill activates during architecture-audit and cook
+    Given the file skills/code-pruning/SKILL.md exists
+    When I read the frontmatter description
+    Then it should contain activation keyword "architecture-audit"
+    And it should contain activation keyword "cook"
+
+  Scenario: Pruning skill covers common mistakes and false positive risks
+    Given the code-pruning skill exists
+    When I check for error guidance
+    Then it should address false positive risks in dead code detection
+    And it should warn about seasonal and disaster-recovery code
+    And it should address the risk of pruning without tests

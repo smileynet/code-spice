@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **code-yagni** skill (cs-yqn) — YAGNI decision frameworks: four costs of presumptive features, speculative generality detection, build-vs-not-build decision framework, bloat antipatterns. Activates during `/brainstorm` and `/scope`.
 - **code-scope-boundaries** skill (cs-iac) — Project-level scope analysis: cohesion test, feature belonging assessment, scope creep warning signs, split-vs-keep decision framework, safe splitting patterns. Activates during `/architecture-audit`.
+- **code-pruning** skill (cs-5py) — Dead code detection and safe removal: static/dynamic/combined (SCARF) analysis, language-specific tool recommendations (Feb 2026), 6-step safe removal process, dependency pruning, commented-out code elimination, bloat metrics. Activates during `/architecture-audit` and `/cook`.
 
 ## [0.1.0] - 2026-02-15
 
