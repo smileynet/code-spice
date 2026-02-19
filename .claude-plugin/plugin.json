@@ -1,7 +1,7 @@
 {
   "name": "code",
-  "description": "Code quality spice for Line Cook — quality pillars, abstraction layers, implementation guidance, antipattern detection, code review, testing practices, tradeoff analysis, and smell detection",
-  "version": "0.1.0",
+  "description": "Code quality spice for Line Cook — quality pillars, abstraction layers, implementation guidance, antipattern detection, code review, testing practices, tradeoff analysis, smell detection, YAGNI decision frameworks, dead code pruning, and scope boundary analysis",
+  "version": "0.2.0",
   "author": {
     "name": "smileynet"
   },
@@ -21,6 +21,10 @@
     "tradeoff-analysis",
     "code-smells",
     "commands",
-    "agents"
+    "agents",
+    "yagni",
+    "pruning",
+    "scope-boundaries",
+    "dead-code"
   ]
 }

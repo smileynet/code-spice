@@ -1,6 +1,6 @@
 # Code Spice
 
-Code quality spice for [Line Cook](https://github.com/smileynet/line-cook) — quality pillars, readability patterns, refactoring catalog, error handling strategies, antipattern detection, code review practices, testing guidance, tradeoff analysis, plan auditing, and a code quality critic agent.
+Code quality spice for [Line Cook](https://github.com/smileynet/line-cook) — quality pillars, readability patterns, refactoring catalog, error handling strategies, antipattern detection, code review practices, testing guidance, tradeoff analysis, plan auditing, YAGNI decision frameworks, dead code pruning, scope boundary analysis, and a code quality critic agent.
 
 ## Quick Start
 
@@ -73,6 +73,7 @@ Each question comes from a different skill, but they flow as a natural conversat
 - Running `/code:tradeoff` to systematically evaluate design alternatives
 - Running `/code:smell` to detect antipatterns in recent changes
 - Running `/code:review-prep` to prepare a self-review checklist
+- Running `/code:prune` to analyze a codebase for dead code, unused dependencies, and pruning opportunities
 
 **Skip it when:**
 - Building a game (use [game-spice](https://github.com/smileynet/game-spice) instead)
@@ -85,6 +86,7 @@ Each question comes from a different skill, but they flow as a natural conversat
 | `/code:tradeoff` | Systematic tradeoff analysis for design decisions | Evaluating competing approaches (DRY vs duplication, flexibility vs simplicity, build vs buy) |
 | `/code:smell` | Structured code smell detection on recent changes | Catching antipatterns before code review |
 | `/code:review-prep` | Generate a context-aware self-review checklist | Preparing for `/line:serve` or manual code review |
+| `/code:prune` | Interactive codebase pruning analysis | Detecting dead code, unused dependencies, and safe removal planning |
 
 ## Agents
 
@@ -106,8 +108,11 @@ Each question comes from a different skill, but they flow as a natural conversat
 | **code-testing-quality** | `/cook` | Unit testing principles, test doubles, test structure, testing antipatterns |
 | **software-tradeoffs** | `/brainstorm`, `/scope` | Duplication vs DRY, flexibility vs complexity, performance vs readability, build vs buy |
 | **code-plan-audit** | `/plan-audit` | Plan quality scorecard, completeness checks, antipattern risk, readiness assessment |
+| **code-yagni** | `/brainstorm`, `/scope` | YAGNI decision frameworks, speculative generality, build-vs-not-build |
+| **code-scope-boundaries** | `/brainstorm`, `/scope` | Cohesion test, feature belonging, scope creep, split-vs-keep |
+| **code-pruning** | `/cook`, `/architecture-audit` | Dead code detection, SCARF analysis, safe removal, dependency pruning |
 
-10 skills, 3 commands, 1 agent.
+13 skills, 4 commands, 1 agent.
 
 ## How It Works
 
@@ -119,9 +124,11 @@ Skills load automatically when Line Cook commands detect code project context. N
 │ code-quality-      │    │ code-readability         │    │ code-antipatterns │
 │   foundations      │    │ code-naming              │    │ code-plan-audit   │
 │ software-tradeoffs │───>│ refactoring-patterns     │───>│                   │
-│                    │    │ error-handling-patterns   │    └──────────────────┘
-│                    │    │ code-antipatterns         │
-│                    │    │ software-tradeoffs        │
+│ code-yagni         │    │ error-handling-patterns   │    └──────────────────┘
+│ code-scope-        │    │ code-antipatterns         │
+│   boundaries       │    │ software-tradeoffs        │
+│                    │    │ code-yagni               │
+│                    │    │ code-scope-boundaries    │
 └────────────────────┘    └──────────────────────────┘
 
  /line:cook                 /line:serve
@@ -135,8 +142,8 @@ Skills load automatically when Line Cook commands detect code project context. N
 │ code-review        │    ┌──────────────────────────┐
 │ code-testing-      │    │ Tradeoff analysis dialog  │
 │   quality          │    └──────────────────────────┘
-└────────────────────┘
-                           /code:smell
+│ code-pruning       │
+└────────────────────┘     /code:smell
                           ┌──────────────────────────┐
                           │ Antipattern scan on diff  │
                           └──────────────────────────┘
@@ -144,6 +151,11 @@ Skills load automatically when Line Cook commands detect code project context. N
                            /code:review-prep
                           ┌──────────────────────────┐
                           │ Self-review checklist      │
+                          └──────────────────────────┘
+
+                           /code:prune
+                          ┌──────────────────────────┐
+                          │ Codebase pruning analysis  │
                           └──────────────────────────┘
 ```
 

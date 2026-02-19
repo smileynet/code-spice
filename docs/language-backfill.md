@@ -34,5 +34,8 @@ Code Spice skills are synthesized from books that use specific languages for exa
 | software-tradeoffs | Java | - | - | - | - |
 | code-testing-quality | Java-like | - | - | - | - |
 | code-plan-audit | Synthesized | - | - | - | - |
+| code-yagni | Synthesized | - | - | - | - |
+| code-scope-boundaries | Synthesized | - | - | - | - |
+| code-pruning | Mixed | - | - | - | - |
 
 **Legend:** n/a = language-agnostic (no backfill needed), `-` = not yet created

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-02-18
+
 ### Added
 - **Phase 6: YAGNI & Code Pruning** (cs-bqx) — "Subtractive" complement to the constructive MLP (Phases 1-5). Three knowledge skills and one interactive command for preventing feature bloat, detecting dead code, and evaluating project scope boundaries.
   - **code-yagni** skill — YAGNI decision frameworks: four costs of presumptive features, speculative generality detection, build-vs-not-build decision framework, bloat antipatterns
@@ -43,5 +45,6 @@ Code quality spice for Line Cook — 10 knowledge skills, 3 interactive commands
 
 - **code-quality-critic** agent — Automatically reviews code quality during `/line:serve`, covering readability, naming, error handling, antipatterns, and testability.
 
-[Unreleased]: https://github.com/smileynet/code-spice/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/smileynet/code-spice/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/smileynet/code-spice/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/smileynet/code-spice/releases/tag/v0.1.0
