@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.0] - 2026-02-18
 
 ### Added
+
 - **Phase 6: YAGNI & Code Pruning** (cs-bqx) — "Subtractive" complement to the constructive MLP (Phases 1-5). Three knowledge skills and one interactive command for preventing feature bloat, detecting dead code, and evaluating project scope boundaries.
   - **code-yagni** skill — YAGNI decision frameworks: four costs of presumptive features, speculative generality detection, build-vs-not-build decision framework, bloat antipatterns
   - **code-scope-boundaries** skill — Project-level scope analysis: cohesion test, feature belonging assessment, scope creep warning signs, split-vs-keep decision framework

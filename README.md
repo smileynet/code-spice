@@ -131,6 +131,11 @@ Skills load automatically when Line Cook commands detect code project context. N
 │                    │    │ code-scope-boundaries    │
 └────────────────────┘    └──────────────────────────┘
 
+ /architecture-audit
+┌────────────────────┐
+│ code-pruning       │
+└────────────────────┘
+
  /line:cook                 /line:serve
 ┌────────────────────┐    ┌──────────────────────────┐
 │ code-readability   │    │ code-review              │
@@ -139,24 +144,24 @@ Skills load automatically when Line Cook commands detect code project context. N
 │   patterns         │    └──────────────────────────┘
 │ error-handling-    │
 │   patterns         │     /code:tradeoff
-│ code-review        │    ┌──────────────────────────┐
-│ code-testing-      │    │ Tradeoff analysis dialog  │
-│   quality          │    └──────────────────────────┘
+│ code-review        │    ┌────────────────────────────┐
+│ code-testing-      │    │ Tradeoff analysis dialog   │
+│   quality          │    └────────────────────────────┘
 │ code-pruning       │
 └────────────────────┘     /code:smell
-                          ┌──────────────────────────┐
-                          │ Antipattern scan on diff  │
-                          └──────────────────────────┘
+                          ┌────────────────────────────┐
+                          │ Antipattern scan on diff   │
+                          └────────────────────────────┘
 
                            /code:review-prep
-                          ┌──────────────────────────┐
+                          ┌────────────────────────────┐
                           │ Self-review checklist      │
-                          └──────────────────────────┘
+                          └────────────────────────────┘
 
                            /code:prune
-                          ┌──────────────────────────┐
+                          ┌────────────────────────────┐
                           │ Codebase pruning analysis  │
-                          └──────────────────────────┘
+                          └────────────────────────────┘
 ```
 
 Skills can activate in multiple phases — `code-antipatterns` appears in both scope and plan-audit because antipattern awareness matters during design and during review.
