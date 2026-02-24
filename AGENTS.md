@@ -61,15 +61,16 @@ description: <keyword-rich description that triggers activation during Line Cook
 
 ### Size Target
 
-200-400 lines per SKILL.md. Use `<details><summary>` for progressive disclosure when content would exceed the target.
+Under 150 lines per SKILL.md. Focus on content that changes Claude's behavior — decision tables, checklists, severity frameworks, and operational protocols. See `docs/skill-content-guide.md` for content philosophy.
 
 ### Content Patterns
 
-- **Quick Reference** section at top with decision tables
-- **Cross-references** between skills: `(see code-X -> Section)`
-- **Before/After examples** for antipatterns and refactoring
-- **Decision tables** for actionable guidance
-- Synthesized knowledge, not copied text from source material
+- **Decision tables** and **checklists** as primary content (token-efficient behavioral anchors)
+- **Severity classifications** for consistent output across sessions
+- **Empirical data** with sources (statistics Claude won't cite unprompted)
+- **Operational protocols** with named stages (e.g., SCARF)
+- **Current tool knowledge** that may post-date training cutoff
+- Avoid: prose explanations, before/after code examples, textbook knowledge, language conventions
 
 ### Keyword Activation
 

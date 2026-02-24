@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-02-23
+
+### Changed
+
+- **Right-sizing review**: Trimmed all 13 skills from ~4,200 to ~1,200 lines (-72%). Cut prose explanations, before/after code examples, and standard knowledge Claude already has. Kept decision tables, checklists, severity frameworks, and operational protocols — content that actually changes Claude's behavior when loaded.
+- **Commands refactored**: All 4 commands now reference skills for knowledge instead of inlining duplicate content. Commands define workflow, skills define knowledge. (~960 to ~400 lines, -58%)
+- **Agent simplified**: `code-quality-critic` stripped of pillar explanations. Keeps output format spec and lane definition. (~188 to ~80 lines)
+
+### Added
+
+- `docs/skill-content-guide.md` — User-facing guide explaining what provides value in LLM skills (decision frameworks, behavioral anchoring, empirical data, operational protocols, tool knowledge) vs. what wastes tokens (textbook explanations, before/after examples, language conventions, general best practices)
+- `tests/smoke/validate.sh` — Consolidated validation script replacing 7 individual smoke tests. Checks all 13 skills, 4 commands, 1 agent, plugin structure, and content duplication
+
+### Removed
+
+- `tests/specs/` — Build specifications for skill creation (skills are built; spent instructions)
+- `tests/features/` — BDD .feature files (can't meaningfully automate qualitative skill testing)
+- 7 individual smoke test scripts (replaced by `validate.sh`)
+
+### Moved
+
+- `docs/planning/` → `docs/_archive/planning/` (build-time artifacts, useful history)
+- `docs/features/` → `docs/_archive/features/` (acceptance criteria for completed features)
+
 ## [0.2.0] - 2026-02-18
 
 ### Added
@@ -46,6 +70,7 @@ Code quality spice for Line Cook — 10 knowledge skills, 3 interactive commands
 
 - **code-quality-critic** agent — Automatically reviews code quality during `/line:serve`, covering readability, naming, error handling, antipatterns, and testability.
 
-[Unreleased]: https://github.com/smileynet/code-spice/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/smileynet/code-spice/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/smileynet/code-spice/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/smileynet/code-spice/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/smileynet/code-spice/releases/tag/v0.1.0

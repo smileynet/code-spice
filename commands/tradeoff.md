@@ -5,7 +5,7 @@ allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill
 
 ## Summary
 
-**Walk through a structured tradeoff analysis for a design decision.** Uses dimensions from the software-tradeoffs skill and code-quality-foundations to help you evaluate options systematically.
+**Walk through a structured tradeoff analysis for a design decision.** References the `software-tradeoffs` and `code-quality-foundations` skills for evaluation frameworks.
 
 **Arguments:** `$ARGUMENTS` (optional) - Brief description of the design decision
 
@@ -34,108 +34,59 @@ allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill
 
 ### Step 2: Identify Relevant Tradeoff Dimensions
 
-From the **software-tradeoffs** skill, select which dimensions are relevant to this decision. Not every dimension applies to every decision — pick the ones that create real tension.
+From the **software-tradeoffs** skill's Tradeoff Decision Matrix, select which dimensions create real tension for this decision. Not every dimension applies — pick the relevant ones.
 
-**Tradeoff Dimensions Catalog:**
-
-| Dimension | Tension | When It Matters |
-|-----------|---------|-----------------|
-| **Duplication vs DRY** | Removing duplication vs avoiding wrong abstractions | Shared logic across modules, utility extraction |
-| **Flexibility vs complexity** | Supporting future changes vs keeping code simple now | Extension points, plugin systems, configuration |
-| **Simplicity vs extensibility** | Minimal code vs designing for growth | New features, API design, data models |
-| **Performance vs readability** | Optimized execution vs clear intent | Hot paths, data processing, algorithms |
-| **Build vs buy** | Custom solution vs third-party dependency | Libraries, services, infrastructure |
-| **Consistency vs availability** | Data correctness vs system uptime | Distributed systems, caching, eventual consistency |
-
-Use **AskUserQuestion** to confirm which dimensions apply:
-
-**Question:** "Which tradeoff dimensions are relevant to this decision?"
-Present the dimensions with descriptions, allowing multiple selection.
+Use **AskUserQuestion** to confirm which dimensions apply (multiple selection).
 
 ### Step 3: Walk Through Each Dimension
 
-For each selected dimension, ask targeted questions to surface the tradeoff:
+For each selected dimension:
 
-**Template per dimension:**
+1. **State the tension** for this specific decision
+2. **Ask** which direction the context favors (Option A / Option B / "It's a wash")
+3. **Note** the answer and reasoning
 
-1. **State the tension:** Explain what pulls in each direction for this specific decision
-2. **Ask:** "For [dimension], which direction does your context favor?"
-   - Option A (one side of the tradeoff) — with brief rationale
-   - Option B (other side) — with brief rationale
-   - "It's a wash" — this dimension doesn't differentiate the options
-3. **Note the answer** and any reasoning the user provides
-
-Reference the **code-quality-foundations** skill for quality pillar impacts — how does each direction affect readability, modularity, testability, etc.
+Reference the **code-quality-foundations** skill for quality pillar impacts.
 
 ### Step 4: Present Structured Analysis
-
-After walking through all relevant dimensions, produce the analysis with pros and cons for each option:
 
 ```
 ╔══════════════════════════════════════════════════════════════╗
 ║  TRADEOFF ANALYSIS                                          ║
 ╚══════════════════════════════════════════════════════════════╝
 
-DECISION: <brief description of the decision>
+DECISION: <brief description>
 
 OPTIONS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 Option A: <name>
-  Pros:
-    + <advantage 1>
-    + <advantage 2>
-  Cons:
-    - <disadvantage 1>
-    - <disadvantage 2>
+  Pros:  + ...
+  Cons:  - ...
 
 Option B: <name>
-  Pros:
-    + <advantage 1>
-    + <advantage 2>
-  Cons:
-    - <disadvantage 1>
-    - <disadvantage 2>
+  Pros:  + ...
+  Cons:  - ...
 
 DIMENSION ANALYSIS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-| Dimension              | Favors     | Rationale                    |
-|------------------------|------------|------------------------------|
-| <dimension 1>          | Option A/B | <why>                        |
-| <dimension 2>          | Option A/B | <why>                        |
-| <dimension 3>          | Neutral    | <why>                        |
+| Dimension | Favors | Rationale |
+|-----------|--------|-----------|
 
 RECOMMENDATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-<Which option and why, given the context and constraints>
-
+<Which option and why>
 Confidence: <High/Medium/Low>
-Key risk: <the main thing that could make this the wrong choice>
+Key risk: <main thing that could make this wrong>
 
 QUALITY IMPACT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-| Pillar        | Impact of recommendation |
-|---------------|--------------------------|
-| Readable      | <positive/neutral/negative — brief note> |
-| Modular       | <positive/neutral/negative — brief note> |
-| Testable      | <positive/neutral/negative — brief note> |
+| Pillar | Impact |
+|--------|--------|
 ```
 
 ### Step 5: Offer to Record Decision
 
-After presenting the analysis, offer to persist the decision:
-
-Use **AskUserQuestion**:
-
-**Question:** "Would you like to record this as an architecture decision?"
-**Options:**
-- "Yes, record via /line:decision" — Invoke `/line:decision` to create an ADR
-- "No, analysis is sufficient" — Stop here
-
-If the user chooses to record, invoke `Skill(skill="line:decision")` with the decision context pre-filled from the analysis.
+Use **AskUserQuestion** to offer recording via `/line:decision`. If yes, invoke `Skill(skill="line:decision")` with context pre-filled.
 
 ---
 

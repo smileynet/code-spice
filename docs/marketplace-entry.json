@@ -4,7 +4,7 @@
     "source": "url",
     "url": "https://github.com/smileynet/code-spice.git"
   },
-  "description": "Code quality spice — quality pillars, abstraction layers, antipattern detection, refactoring patterns, error handling, tradeoff analysis, YAGNI decision frameworks, dead code pruning, and scope boundary analysis",
+  "description": "Code quality spice — decision frameworks, antipattern detection, refactoring patterns, tradeoff analysis, YAGNI guidance, dead code pruning, and plan auditing",
   "category": "domain-knowledge",
   "tags": ["code-quality", "spice", "antipatterns", "refactoring", "code-review", "testing", "yagni", "pruning", "dead-code", "scope-boundaries"]
 }
