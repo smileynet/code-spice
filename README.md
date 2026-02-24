@@ -148,7 +148,7 @@ Knowledge synthesized from four code quality books:
 No. Install the plugin and plan a project. Skills activate automatically.
 
 **Does code-spice work without Line Cook?**
-The skills are designed for Line Cook's `/mise` workflow. Without Line Cook, Claude won't have the planning commands that trigger these skills.
+The skills are designed for Line Cook's `/line:mise` workflow. Without Line Cook, Claude won't have the planning commands that trigger these skills.
 
 **What languages does it cover?**
 The guidance is language-agnostic. Principles apply to any language.

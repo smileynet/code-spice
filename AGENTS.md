@@ -23,7 +23,13 @@ bd sync               # Sync with git
 
 ### Smoke Testing
 
-No automated test runner. Validate manually:
+Run the consolidated validation script:
+
+```bash
+bash tests/smoke/validate.sh
+```
+
+Or validate individual items manually:
 
 ```bash
 # Plugin structure

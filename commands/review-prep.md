@@ -1,4 +1,5 @@
 ---
+name: review-prep
 description: Generate a context-aware self-review checklist before code review
 allowed-tools: Read, Glob, Grep, Bash
 ---

@@ -1,4 +1,5 @@
 ---
+name: smell
 description: Structured code smell detection on recent changes
 allowed-tools: Read, Glob, Grep, Bash
 ---

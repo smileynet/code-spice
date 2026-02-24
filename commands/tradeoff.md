@@ -1,4 +1,5 @@
 ---
+name: tradeoff
 description: Systematic tradeoff analysis for design decisions
 allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill
 ---
