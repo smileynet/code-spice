@@ -97,7 +97,7 @@ Each question comes from a different skill, but they flow as a natural conversat
 | **code-scope-boundaries** | `/brainstorm`, `/scope` | Scope health checklist, feature belonging test, split-vs-keep tree |
 | **code-pruning** | `/cook`, `/architecture-audit` | SCARF pattern, tool table, safe removal process, bloat metrics |
 
-13 skills (~1,200 lines), 4 commands, 1 agent. Each skill is under 110 lines — focused on decision tables and checklists that change Claude's behavior, not prose Claude already knows.
+13 skills (~1,200 lines), 4 commands, 1 agent. Each skill is under 150 lines — focused on decision tables and checklists that change Claude's behavior, not prose Claude already knows.
 
 ## How It Works
 
